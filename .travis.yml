@@ -2,23 +2,23 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t anikethsharma0211/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t aniketsharma0211/react-test -f ./client/Dockerfile.dev ./client
     
 script:
-    - docker run -e CI=true anikethsharma0211/react-test npm test
+    - docker run -e CI=true aniketsharma0211/react-test npm test
     
 after_success:
-    - docker build -t anikethsharma0211/multi-client ./client
-    - docker build -t anikethsharma0211/multi-server ./server
-    - docker build -t anikethsharma0211/multi-nginx ./nginx
-    - docker build -t anikethsharma0211/multi-worker ./worker
+    - docker build -t aniketsharma0211/multi-client ./client
+    - docker build -t aniketsharma0211/multi-server ./server
+    - docker build -t aniketsharma0211/multi-nginx ./nginx
+    - docker build -t aniketsharma0211/multi-worker ./worker
 
     # login to docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     
     # Push to dockerHub
-    - docker push anikethsharma0211/multi-client
-    - docker push anikethsharma0211/multi-server
-    - docker push anikethsharma0211/multi-nginx
-    - docker push anikethsharma0211/multi-worker
+    - docker push aniketsharma0211/multi-client
+    - docker push aniketsharma0211/multi-server
+    - docker push aniketsharma0211/multi-nginx
+    - docker push aniketsharma0211/multi-worker
     
